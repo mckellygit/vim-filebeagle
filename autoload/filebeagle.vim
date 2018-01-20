@@ -467,6 +467,10 @@ function! s:NewDirectoryViewer()
             nnoremap <Plug>(FileBeagleBufferTabVisitTarget)                     :<C-U>call b:filebeagle_directory_viewer.visit_target("tabedit", 0)<CR>
             let l:default_normal_plug_map['FileBeagleBufferTabVisitTarget'] = 't'
             vnoremap <Plug>(FileBeagleBufferTabVisitTarget)                     :call b:filebeagle_directory_viewer.visit_target("tabedit", 0)<CR>
+            " mck
+            nmap <buffer> <silent> <C-t> <Plug>(FileBeagleBufferTabVisitTarget)
+            nmap <buffer> <silent> <Leader><Tab> <Plug>(FileBeagleBufferTabVisitTarget)
+            " mck
             let l:default_visual_plug_map['FileBeagleBufferTabVisitTarget'] = 't'
             nnoremap <Plug>(FileBeagleBufferBgTabVisitTarget)                   :<C-U>call b:filebeagle_directory_viewer.visit_target("tabedit", 1)<CR>
             let l:default_normal_plug_map['FileBeagleBufferBgTabVisitTarget'] = g:filebeagle_buffer_background_key_map_prefix . 't'
