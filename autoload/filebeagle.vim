@@ -330,7 +330,7 @@ function! s:NewDirectoryViewer()
         call self.setup_buffer_syntax()
         call self.setup_buffer_commands()
         call self.setup_buffer_keymaps()
-        call self.setup_buffer_statusline()
+        " mck call self.setup_buffer_statusline()
         " let self.prev_buf_num = prev_buf_num
         " set up filters
         let self.is_filtered = a:is_filtered
