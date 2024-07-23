@@ -426,9 +426,16 @@ function! s:NewDirectoryViewer()
             nnoremap <Plug>(FileBeagleBufferToggleHiddenAndIgnored)             :call b:filebeagle_directory_viewer.toggle_hidden_and_ignored()<CR>
             let l:default_normal_plug_map['FileBeagleBufferToggleHiddenAndIgnored'] = 'gh'
             nnoremap <Plug>(FileBeagleBufferQuit)                               :call b:filebeagle_directory_viewer.quit_buffer()<CR>
-            let l:default_normal_plug_map['FileBeagleBufferQuit'] = 'q'
+            " mck let l:default_normal_plug_map['FileBeagleBufferQuit'] = 'q'
             nnoremap <Plug>(FileBeagleBufferCloseWindow)                        :call b:filebeagle_directory_viewer.close_window()<CR>
             let l:default_normal_plug_map['FileBeagleBufferCloseWindow'] = '<C-W><C-C>'
+            " mck
+            nmap <buffer> <silent> <Leader>qq <Plug>(FileBeagleBufferCloseWindow)
+            nmap <buffer> <silent> <C-q>      <Plug>(FileBeagleBufferCloseWindow)
+            nmap <buffer> <silent> Q          <Plug>(FileBeagleBufferCloseWindow)
+            nmap <buffer> <silent> <M-q>      <Plug>(FileBeagleBufferCloseWindow)
+            nmap <buffer> <silent> <F18>      <Plug>(FileBeagleBufferCloseWindow)
+            " mck
 
             """ Open selected file/directory
             nnoremap <Plug>(FileBeagleBufferVisitTarget)                        :<C-U>call b:filebeagle_directory_viewer.visit_target("edit", 0)<CR>
