@@ -171,7 +171,9 @@ function! s:discover_paths(current_dir, glob_pattern, is_include_hidden, is_incl
     let dir_paths = []
     let file_paths = []
     " call add(dir_paths, s:GetCurrentDirEntry(l:current_dir))
-    call add(dir_paths, s:build_current_parent_dir_entry(l:current_dir))
+    if g:filebeagle_show_parent 
+      call add(dir_paths, s:build_current_parent_dir_entry(l:current_dir))
+    endif
     for path_entry in paths
         let path_entry = substitute(path_entry, s:sep_as_pattern.'\+', s:sep, 'g')
         let path_entry = substitute(path_entry, s:sep_as_pattern.'$', '', 'g')
@@ -469,10 +471,14 @@ function! s:NewDirectoryViewer()
 
             nnoremap <Plug>(FileBeagleBufferSplitVisitTarget)                   :<C-U>call b:filebeagle_directory_viewer.visit_target("sp", 0)<CR>
             " let l:default_normal_plug_map['FileBeagleBufferSplitVisitTarget'] = 's'
+            " mck
             let l:default_normal_plug_map['FileBeagleBufferSplitVisitTarget'] = '<C-x>'
+            " mck
             vnoremap <Plug>(FileBeagleBufferSplitVisitTarget)                   :call b:filebeagle_directory_viewer.visit_target("sp", 0)<CR>
             " let l:default_visual_plug_map['FileBeagleBufferSplitVisitTarget'] = 's'
+            " mck
             let l:default_visual_plug_map['FileBeagleBufferSplitVisitTarget'] = '<C-x>'
+            " mck
             nnoremap <Plug>(FileBeagleBufferBgSplitVisitTarget)                 :<C-U>call b:filebeagle_directory_viewer.visit_target("rightbelow sp", 1)<CR>
             let l:default_normal_plug_map['FileBeagleBufferBgSplitVisitTarget'] = g:filebeagle_buffer_background_key_map_prefix . 's'
             vnoremap <Plug>(FileBeagleBufferBgSplitVisitTarget)                 :call b:filebeagle_directory_viewer.visit_target("rightbelow sp", 1)<CR>
